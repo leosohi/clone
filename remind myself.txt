@@ -1,0 +1,70 @@
+新的送餐div
+學習如何做一個db upload data
+學習如何fetch data 
+學習如何做complex array
+
+0. input如何找restaurant
+1. overlay popup (搞不好...)
+2. scroll div box shadow;
+3. login function => 加心心, 記錄已喜愛的網頁。
+4. fetch 不到google api
+5. api setDeliveryTo
+6. Company name change => change title info
+7. responsive design 
+
+
+未做:
+
+mark color:
+if mark < 4.5 => #00717C
+else #4D7C1B
+
+最大array : 有齊所有公司的資料
+
+每個section都要filter剩condition X的公司 
+每個condition X 都要記錄
+
+推薦  => suggest: "true"
+以下三個都有button, 並會去到大格頁
+評分最高 => rank by mark 4.幾分
+距離 => rank by distance
+送餐時間最快 => discount != ""
+你附近的優惠 => rank by distance + discount != ""
+全單 => discount include "全單"
+是日超值 => 全單20%折扣
+生活百貨優惠 => 生活百貨優惠 = "true"
+膳食: set = "true"
+
+美食類型: set 每間三種
+菜式: 不限
+deliveroo choice: == kangaroo's choice
+
+closeTime:23:00
+
+最低消費: ${number}
+
+.diplayHeart: false (等登入後才true)
+.heartNum: {某個數} =>按下有animation, 心數目+1
+.運費: {no.}
+
+
+[
+    {
+        name: xx會社,
+        id: 123,
+        食物: [
+        [
+            title: "沙牛"
+            food: [
+                主餐: "",                
+            ],
+        ]
+        ],
+
+    }
+]
+.其他受歡迎之選: filter出受歡迎= true
+
+
+1. sorting 較麻煩
+2. create 一個database, 輸入info再 fetch data
