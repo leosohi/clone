@@ -5,6 +5,7 @@ import { CaretDown } from "@phosphor-icons/react";
 const ResponsiveTop = () => {
   const { deliveryTime, deliverTo, setBaggie, setBike, Lottie, delivery } =
     useContext(ShopContext);
+    
   return (
     <div className="responsiveTop">
       <div className="content">

@@ -305,4 +305,4 @@ const nearDiscount = [
   },
 ];
 
-export { topCatData, topAdsData, hotPickData, nearDiscount };
+export { topCatData, topAdsData };

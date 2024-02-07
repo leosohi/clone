@@ -7,7 +7,7 @@
 }
 
 html {
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 :root {
@@ -316,6 +316,7 @@ html {
   border-radius: 3px;
   padding: 24px;
   transform: translate(-50%, -50%);
+  animation: modalPopUp 0.4s ease-in-out;
 }
 .side .modal .overlay .content .heading {
   display: block;
@@ -548,6 +549,7 @@ html {
   border-radius: 3px;
   width: 560px;
   transform: translate(-50%, -50%);
+  animation: modalPopUp 0.4s ease-in-out;
 }
 .side .modal .timeModal .overlayIII .contentIII .heading {
   padding: 16px;
@@ -1231,9 +1233,11 @@ html {
 @keyframes modalPopUp {
   from {
     opacity: 0;
+    transform: translate(-50%, -50%) scale(0.7);
   }
   to {
     opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
   }
 }
 @keyframes overlay {

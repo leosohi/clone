@@ -25,6 +25,9 @@ const Modal = () => {
     changeTime,
     locationModal,
     timeModal,
+    setDeliverTo,
+    PlaceSelected,
+    setPlaceSelected,
   } = useContext(ShopContext);
 
   /* display time option */
@@ -87,7 +90,7 @@ const Modal = () => {
 
             <div className="changeLocation">
               <div className="locationData">
-                <span>location</span>
+                <span>{PlaceSelected}</span>
                 <span>Hong Kong</span>
               </div>
 
@@ -134,13 +137,29 @@ const Modal = () => {
                 <span>輸入你的地址</span>
                 <Autocomplete
                   apiKey={process.env.REACT_APP_GOOGLE_API}
-                  onPlaceSelected={(place) => console.log(place)}
-                />
+                  onPlaceSelected={(place) =>
+                    setPlaceSelected(place.formatted_address)
+                  }
+                  options={{
+                    types: ["address"],
+                    componentRestrictions: { country: "hk" },
+                  }}
+                />{" "}
                 <NavigationArrow className="arrow" size={20} color="#08c1bb" />
               </label>
 
               <div className="search">
-                <button>尋找</button>
+                <button
+                  onClick={() => {
+                    if (PlaceSelected !== "" ) {
+                      changeLocation();
+                      setDeliverTo(PlaceSelected);
+                    } 
+                    
+                  }}
+                >
+                  確定
+                </button>
               </div>
             </div>
           </div>
@@ -337,7 +356,6 @@ const Modal = () => {
           </div>
         </div>
       )}
-
     </div>
   );
 };

@@ -6,7 +6,7 @@
 }
 
 html {
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 :root {
@@ -353,6 +353,7 @@ html {
         border-radius: 3px;
         padding: 24px;
         transform: translate(-50%, -50%);
+        animation: modalPopUp 0.4s ease-in-out;
 
         .heading {
           display: block;
@@ -626,6 +627,7 @@ html {
           border-radius: 3px;
           width: 560px;
           transform: translate(-50%, -50%);
+          animation: modalPopUp 0.4s ease-in-out;
 
           .heading {
             padding: 16px;
@@ -976,7 +978,6 @@ html {
     overflow-y: scroll;
     overflow-x: hidden;
     padding: 0 16px 8px 0;
-
     /* scroll div shadow */
 
     /* scroll bar 部份 */
@@ -1415,7 +1416,6 @@ html {
   }
 }
 
-
 /* hide responsive top div */
 .responsiveTop {
   display: none;
@@ -1424,10 +1424,12 @@ html {
 @keyframes modalPopUp {
   from {
     opacity: 0;
+    transform: translate(-50%, -50%) scale(0.7);
   }
 
   to {
     opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
   }
 }
 
@@ -1486,7 +1488,6 @@ html {
 
   .home {
     .result {
-
       .classicDiv {
         .heading {
           display: flex;
@@ -1525,8 +1526,6 @@ html {
     position: sticky;
     width: 100vh;
     height: 115px;
-
-
 
     .content {
       border-bottom: 2px solid var(--dashed);

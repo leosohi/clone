@@ -1,0 +1,31 @@
+import img12 from "../Assets/hotPicks/burger.jpg";
+import img13 from "../Assets/hotPicks/dessert.jpg";
+import img14 from "../Assets/hotPicks/friedchick.jpg";
+import img15 from "../Assets/hotPicks/spagett.jpg";
+import img16 from "../Assets/hotPicks/sushi.jpg";
+import img17 from "../Assets/nearDiscount/chineseDump.jpg";
+import img18 from "../Assets/nearDiscount/sushi.jpg";
+import img19 from "../Assets/nearDiscount/donburi.jpg";
+import img20 from "../Assets/nearDiscount/thai.jpg";
+import img21 from "../Assets/nearDiscount/soup.jpg";
+import img22 from "../Assets/nearDiscount/congee.jpg";
+
+
+
+
+
+
+
+{
+    "charge": "消費滿 $290",
+    "discount": "全單30%折扣",
+    "special": "待待送 Kangaroo 獨家",
+    "img": "../Assets/topAds/salad.jpg",
+    "time": "15 - 30",
+    "name": "Kangaroo HOP 待待超市",
+    "color": "#4D7C1B",
+    "mark": "4.5 極正",
+    "comment": "(500+)",
+    "num": "1.3 公里",
+    "dFee": "免運費",
+  }

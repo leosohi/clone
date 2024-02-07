@@ -10,7 +10,7 @@ export const ShopContextProvider = (props) => {
   const [modal, setModal] = useState(false);
   const [delivery, setDelivery] = useState(true);
   const [modalDelivery, setmodalDelivery] = useState(delivery);
-  const [deliverTo, setDeliverTo] = useState("你老母屋企");
+  const [deliverTo, setDeliverTo] = useState("你屋企");
   const [now, setNow] = useState(true);
   const [dayValue, setDayValue] = useState("今天");
   const [timeValue, setTimeValue] = useState("23:45-00:15");
@@ -19,6 +19,7 @@ export const ShopContextProvider = (props) => {
   const [timeModal, setTimeModal] = useState(false);
   const [loginPage, setLoginPage] = useState(false);
   const [clickedAc, setClickedAc] = useState(false);
+  const [PlaceSelected, setPlaceSelected] = useState("你的位置");
 
   /* 兩張gif */
   const setBaggie = {
@@ -42,7 +43,7 @@ export const ShopContextProvider = (props) => {
   /* 改標題 */
   useEffect(() => {
     document.title = "美食外賣運送至" +  deliverTo  + " - 於Kangaroo訂購";
-  }, []);
+  }, [deliverTo]);
 
   /* ac modal anime */
   const modalStyle = clickedAc
@@ -78,7 +79,7 @@ export const ShopContextProvider = (props) => {
       setDeliveryTime(dayValue + " " + timeValue);
     }
 
-    changeInfo();
+    changeTime();
   };
 
   /* set day, time value */
@@ -150,7 +151,10 @@ export const ShopContextProvider = (props) => {
     modalStyle,
     Lottie,
     setBaggie,
-    setBike
+    setBike,
+    setDeliverTo,
+    PlaceSelected,
+    setPlaceSelected
   };
 
   return (
