@@ -1,47 +1,18 @@
-array of obj or json file...
--1. 重做json file, 重新compress img.
-
-0. input如何找restaurant => filter array...
-
-1. login function => 加心心, 記錄已喜愛的網頁。
-
-4. Company name change => change title info 
-
-7. responsive design 
+2. Cart page
+2.2 格局
+2.3 (responsive design)
 
 
 
+3. input找restaurant的filter array...
+3.1. input bar 出現在div box responsive
+3.2 input bar 變成search page 內的東東...
 
-未做:
-每個section都要filter剩condition X的公司 
-每個condition X 都要記錄
+4. side filter function
+4.1. blue rectangle btn pop
 
-color: "#00717C", "#4D7C1B"
+0. nav stop sticky 
+0.1 compress img website?
 
-suggest: "true"
-以下三個都有button, 並會去到大格頁
-評分最高 => rank by mark 4.幾分
-距離 => rank by distance
-送餐時間最快 => discount != ""
-你附近的優惠 => rank by distance + discount != ""
-全單 => discount include "全單"
-是日超值 => 全單20%折扣
-生活百貨優惠 => 生活百貨優惠 = "true"
-膳食: set = "true"
-
-美食類型: set 每間三種
-菜式: 不限
-deliveroo choice: == kangaroo's choice
-
-closeTime:23:00
-
-最低消費: ${number}
-
-.diplayHeart: false (等登入後才true)
-.heartNum: {某個數} =>按下有animation, 心數目+1
-.運費: {no.}
-
-
-
-
-.其他受歡迎之選: filter出受歡迎= true
+nav responsive 
+upload to git

@@ -28,6 +28,7 @@ const Modal = () => {
     setDeliverTo,
     PlaceSelected,
     setPlaceSelected,
+    deliveryTime
   } = useContext(ShopContext);
 
   /* display time option */
@@ -101,7 +102,7 @@ const Modal = () => {
           <div className="modal-time" onClick={changeTime}>
             <Clock className="clock" size={25} color="#bac3c3" weight="bold" />
             <div className="time-span">
-              <span>時間</span>
+              <span>{now && "現在"}{!now && deliveryTime}</span>
               <span className="changeOrder">更改訂單詳情</span>
             </div>
           </div>
@@ -340,6 +341,7 @@ const Modal = () => {
                         weight="bold"
                       />
                     </label>
+                    
                   </div>
                 )}
               </div>

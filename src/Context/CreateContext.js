@@ -2,6 +2,8 @@ import { createContext, useState, useEffect } from "react";
 import baggie from "../Assets/gif/baggie.json";
 import bike from "../Assets/gif/bike.json";
 import Lottie from "react-lottie";
+import { AllRestaurantData } from "../Sorting/AllRestaurantData";
+import { useNavigate } from "react-router-dom";
 
 export const ShopContext = createContext(null);
 
@@ -20,6 +22,67 @@ export const ShopContextProvider = (props) => {
   const [loginPage, setLoginPage] = useState(false);
   const [clickedAc, setClickedAc] = useState(false);
   const [PlaceSelected, setPlaceSelected] = useState("你的位置");
+  
+
+  /* Filtered Array */
+  const nearDiscount = AllRestaurantData.filter((data) => data.distance < 1);
+  const nearDiscountClassic = nearDiscount.slice(0, 9);
+
+  const allDiscount = AllRestaurantData.filter((data) => data.discount);
+
+  const kangarooMarket = AllRestaurantData.filter((data)=> data.name === "Kangaroo HOP 待待超市")
+
+  const grocery = AllRestaurantData.filter((data) =>
+    data.美食類型.includes("生活百貨")
+  );
+
+  const special = AllRestaurantData.filter(
+    (data) => data.special === "待待送 Kangaroo 獨家"
+  );
+  const specialClassic = special.slice(0, 9);
+
+  const hot = AllRestaurantData.filter((data) => data.hot);
+  const hotClassic = hot.slice(0, 9);
+
+  const noDFee = AllRestaurantData.filter((data) => data.discount === "免運費");
+  const noDFeeClassic = noDFee.slice(0, 9);
+
+  const highMark = AllRestaurantData.sort((a, b) => b.mark - a.mark);
+  const highMarkClassic = highMark.slice(0, 9);
+  const highMarkSingle = highMark.slice(9, 19);
+
+  function parseTime(timeRange) {
+    let [start, end] = timeRange.split(" - ").map((str) => parseInt(str, 10));
+    return { start, end };
+  }
+
+  function compareRestaurants(a, b) {
+    let timeA = parseTime(a.time);
+    let timeB = parseTime(b.time);
+
+    // 比較起始時間
+    if (timeA.start !== timeB.start) {
+      return timeA.start - timeB.start;
+    }
+    // 起始時間相同，比較結束時間
+    return timeA.end - timeB.end;
+  }
+
+  // 使用自定義的比較函數進行排序
+  const fastest = AllRestaurantData.sort(compareRestaurants);
+  const fastestClassic = fastest.slice(0, 9);
+  const fastestSingle = fastest.slice(9, 19);
+
+  // shuffleArray
+  function shuffleArray(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
+
+  const randomRest = shuffleArray([...AllRestaurantData]);
 
   /* 兩張gif */
   const setBaggie = {
@@ -42,7 +105,7 @@ export const ShopContextProvider = (props) => {
 
   /* 改標題 */
   useEffect(() => {
-    document.title = "美食外賣運送至" +  deliverTo  + " - 於Kangaroo訂購";
+    document.title = "美食外賣運送至" + deliverTo + " - 於Kangaroo訂購";
   }, [deliverTo]);
 
   /* ac modal anime */
@@ -53,6 +116,7 @@ export const ShopContextProvider = (props) => {
   /* 按下帳戶btn */
   const acModal = () => {
     setClickedAc(!clickedAc);
+    setScroll(!scroll);
   };
 
   /* 進入登入頁面 */
@@ -154,7 +218,26 @@ export const ShopContextProvider = (props) => {
     setBike,
     setDeliverTo,
     PlaceSelected,
-    setPlaceSelected
+    setPlaceSelected,
+    AllRestaurantData,
+    nearDiscount,
+    special,
+    hot,
+    noDFee,
+    highMark,
+    fastest,
+    nearDiscountClassic,
+    specialClassic,
+    hotClassic,
+    noDFeeClassic,
+    highMarkClassic,
+    fastestClassic,
+    fastestSingle,
+    highMarkSingle,
+    allDiscount,
+    grocery,
+    randomRest,
+    kangarooMarket,
   };
 
   return (

@@ -1,6 +1,6 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { CaretDown } from "@phosphor-icons/react";
-import Modal from "./Modal";
+import { useNavigate } from "react-router-dom";
 import Category from "./Category";
 import {
   discountData,
@@ -12,12 +12,20 @@ import {
 import { ShopContext } from "../../Context/CreateContext";
 
 const Side = () => {
+  const navigate = useNavigate();
   const [rotate, setRotate] = useState(false);
   const [display, setDisplay] = useState(false);
   const [border, setBorder] = useState(true);
-  const { modal, changeInfo, delivery, way, deliverTo, deliveryTime, setBaggie,
-    setBike, Lottie } =
-    useContext(ShopContext);
+  const {
+    changeInfo,
+    delivery,
+    way,
+    deliverTo,
+    deliveryTime,
+    setBaggie,
+    setBike,
+    Lottie,
+  } = useContext(ShopContext);
 
   /* show the list*/
   const activateList = () => {
@@ -36,14 +44,27 @@ const Side = () => {
     transform: rotate ? "rotate(-180deg)" : "rotate(0deg)",
   };
 
+  /* Navigate */
+  useEffect(() => {
+    if (delivery) {
+      navigate("/");
+    } else {
+      navigate("/Take"); // Make sure this matches the case of your route
+    }
+  }, [delivery]);
+
   return (
     <div className="side">
-      {modal && <Modal />}
-
       <div className="gif-part" onClick={changeInfo}>
-       
-      {delivery && <Lottie options={setBike} height={40} width={50} />}
-      {!delivery && <Lottie options={setBaggie} height={40} width={50} style={{paddingRight: "6px"}}/>}
+        {delivery && <Lottie options={setBike} height={40} width={50} />}
+        {!delivery && (
+          <Lottie
+            options={setBaggie}
+            height={40}
+            width={50}
+            style={{ paddingRight: "6px" }}
+          />
+        )}
 
         <div className="timeAndSpace">
           <p className="px14">{deliveryTime}</p>

@@ -1,13 +1,8 @@
-@charset "UTF-8";
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
   font-family: "IBM Plex Sans", sans-serif;
-}
-
-html {
-  overflow: hidden;
 }
 
 :root {
@@ -32,7 +27,7 @@ html {
   border-bottom: var(--dashed);
   height: 70px;
   position: relative;
-  z-index: 1;
+  z-index: 1000;
 }
 .navBar .logo-box .logo {
   color: #1cc9c3;
@@ -63,7 +58,7 @@ html {
   color: rgba(49, 49, 49, 0.45);
 }
 .navBar .searchBarBox .searchBar {
-  width: 25vw;
+  width: 34vw;
   height: 46px;
   padding: 12px 16px 12px 40px;
   background-color: rgba(0, 0, 0, 0.04);
@@ -105,7 +100,7 @@ html {
 .navBar ul.navList {
   display: flex;
   justify-content: space-evenly;
-  margin: 0 50px 0 25px;
+  margin: 0 32px 0 10px;
 }
 .navBar ul.navList a {
   text-decoration: none;
@@ -137,7 +132,6 @@ html {
 
 .navBar .account {
   position: fixed;
-  z-index: 1000;
 }
 .navBar .account .overlay {
   width: 100vw;
@@ -148,7 +142,7 @@ html {
   right: 0;
   position: fixed;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 1000;
+  z-index: 200;
   animation: overlay 0.3s ease;
 }
 
@@ -158,7 +152,7 @@ html {
   position: fixed;
   top: 0;
   right: -375px;
-  z-index: 1000;
+  z-index: 501;
   margin: 0;
   background-color: white;
 }
@@ -168,7 +162,6 @@ html {
   padding: 8px 0 8px 24px;
   border-bottom: var(--dashed);
   align-items: center;
-  z-index: 1000;
   position: relative;
 }
 .account-content .header .logo-name {
@@ -216,16 +209,16 @@ html {
   display: flex;
 }
 .home .result {
-  width: 100%;
-  height: 100vh;
+  height: auto;
   padding: 32px 0 0 8px;
+  overflow-x: hidden;
+}
+.home .result h3.deliverTo {
+  font-size: 22px;
 }
 .home .result .heading {
   display: flex;
   align-items: center;
-}
-.home .result .heading h3 {
-  font-size: 22px;
 }
 .home .result .heading span {
   font-size: 14px;
@@ -234,532 +227,82 @@ html {
   left: 18px;
   color: #00b8a9;
 }
-.home .result .allTopCat {
+.home .result .topCatContainer {
+  overflow: hidden;
+  position: relative;
+}
+.home .result .topCatContainer .catBtn {
+  display: none;
+}
+.home .result .topCatContainer .allTopCat {
   margin-top: 24px;
+  padding-bottom: 6px;
+  max-width: 72.5vw;
   display: grid;
   -moz-column-gap: 8px;
        column-gap: 8px;
   row-gap: 4px;
   grid-auto-flow: column;
   justify-content: start;
+  transition: all 0.5s ease-in-out;
 }
-.home .result .allTopCat .topCat {
+.home .result .topCatContainer .allTopCat a {
+  text-decoration: none;
+}
+.home .result .topCatContainer .allTopCat .topCat {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.0784313725), 0 0 0 1px rgba(0, 0, 0, 0.0392156863);
   width: 167px;
   border-radius: 4px;
 }
-.home .result .allTopCat .topCat img.pic-part {
+.home .result .topCatContainer .allTopCat .topCat:hover {
+  cursor: pointer;
+}
+.home .result .topCatContainer .allTopCat .topCat img.pic-part {
   height: 69px;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 4px 4px 0 0;
   width: 100%;
 }
-.home .result .allTopCat .topCat p {
+.home .result .topCatContainer .allTopCat .topCat p {
   height: 35px;
   font-size: 13.5px;
   font-weight: 600;
   padding: 7px 0 0 7px;
+  color: black;
 }
-.home .result .ads-part {
+.home .result .adsContainer {
+  overflow: hidden;
+  position: relative;
+}
+.home .result .adsContainer .ads-part {
   display: grid;
-  width: 1320px;
-  height: 176px;
-  margin: 28px 0;
+  max-width: 72.5vw;
+  height: 180px;
+  margin: 28px 0 10px 0;
   grid-template-rows: auto;
   justify-content: start;
   row-gap: 4px;
   -moz-column-gap: 8px;
        column-gap: 8px;
   grid-auto-flow: column;
-  overflow: hidden;
+  transition: all 0.5s ease-in-out;
 }
-.home .result .ads-part img {
+.home .result .adsContainer .ads-part:hover {
+  cursor: pointer;
+}
+.home .result .adsContainer .ads-part img {
   border-radius: 4px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.0784313725), 0 0 0 1px rgba(0, 0, 0, 0.0392156863);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
   width: 344px;
   height: 172px;
   -o-object-fit: cover;
      object-fit: cover;
 }
-.home .whitebar {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 24px;
-  height: 100%;
-  background-color: white;
-}
 
 .side {
   width: 262px;
   margin: 30px 24px 0 60px;
-}
-.side .modal .overlay {
-  width: 100vw;
-  height: 100vh;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  position: fixed;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 1;
-  animation: overlay 0.25s ease;
-}
-.side .modal .overlay .content {
-  position: fixed;
-  z-index: 2;
-  top: 50%;
-  left: 50%;
-  background-color: #ffffff;
-  border-radius: 3px;
-  padding: 24px;
-  transform: translate(-50%, -50%);
-  animation: modalPopUp 0.4s ease-in-out;
-}
-.side .modal .overlay .content .heading {
-  display: block;
-  padding-bottom: 16px;
-}
-.side .modal .overlay .content .x {
-  position: absolute;
-  right: 16px;
-  top: 16px;
-  cursor: pointer;
-}
-.side .modal .overlay .content .two-choices {
-  padding: 8px 0 32px;
-}
-.side .modal .overlay .content .two-choices label {
-  padding: 8px;
-  height: 36px;
-  width: 512px;
-  cursor: pointer;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-.side .modal .overlay .content .two-choices label input {
-  display: none;
-}
-.side .modal .overlay .content .two-choices label .radioCoverII {
-  width: 20px;
-  height: 20px;
-  border: var(--choice);
-  border-radius: 50%;
-  padding: 3.25px;
-  margin-right: 8px;
-  transition: all 0.15s ease-out;
-}
-.side .modal .overlay .content .two-choices label .radioCoverII:hover {
-  border-color: var(--theme-color);
-}
-.side .modal .overlay .content .two-choices label .radioCoverII::after {
-  content: "";
-  border: var(--theme-color);
-  width: 100%;
-  height: 100%;
-  display: block;
-  background-color: var(--theme-color);
-  border-radius: 50%;
-  transform: scale(0);
-}
-.side .modal .overlay .content .two-choices label input[type=radio]:checked + .radioCoverII {
-  border: 2px solid var(--theme-color);
-  box-shadow: var(--box-shadow);
-}
-.side .modal .overlay .content .two-choices label input:checked + .radioCoverII::after {
-  transform: scale(1);
-}
-.side .modal .overlay .content .two-choices label span {
-  font-size: 14px;
-}
-.side .modal .overlay .content .modal-space {
-  display: flex;
-  align-items: center;
-  width: 512px;
-  height: 44px;
-  cursor: pointer;
-}
-.side .modal .overlay .content .modal-space .map {
-  margin-right: 16px;
-  margin-top: 3px;
-}
-.side .modal .overlay .content .modal-space .changeLocation {
-  display: flex;
-  justify-content: space-between;
-  width: 482px;
-  align-items: center;
-}
-.side .modal .overlay .content .modal-space .changeLocation .locationData {
-  display: flex;
-  flex-direction: column;
-}
-.side .modal .overlay .content .modal-space .changeLocation span.changeOrder {
-  color: var(--theme-color);
-  font-weight: 500;
-  cursor: pointer;
-}
-.side .modal .overlay .content .modal-time {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 24px 0;
-  width: 512px;
-  height: 72px;
-}
-.side .modal .overlay .content .modal-time .clock {
-  margin-right: 16px;
-  margin-top: 3px;
-}
-.side .modal .overlay .content .modal-time .time-span {
-  width: 482px;
-  display: flex;
-  justify-content: space-between;
-}
-.side .modal .overlay .content .modal-time span.changeOrder {
-  color: var(--theme-color);
-  font-weight: 500;
-  cursor: pointer;
-}
-.side .modal .overlay .content button.confirm {
-  width: 512px;
-  height: 48px;
-  margin-top: 24px;
-  cursor: pointer;
-  background-color: var(--theme-color);
-  border-radius: 3px;
-  border: none;
-}
-.side .modal .overlay .content button.confirm:hover {
-  background-color: #04b7b1;
-}
-.side .modal .overlay .content button.confirm span {
-  font-weight: 600;
-  color: white;
-  font-size: 16px;
-}
-.side .modal .locationModal .overlayII {
-  width: 100vw;
-  height: 100vh;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  position: fixed;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 3;
-  animation: overlay 0.25s ease;
-}
-.side .modal .locationModal .overlayII .contentII {
-  position: fixed;
-  z-index: 4;
-  width: 560px;
-  height: 280px;
-  top: 50%;
-  left: 50%;
-  background-color: #ffffff;
-  border-radius: 3px;
-  animation: modalPopUp 0.45s ease;
-  transform: translate(-50%, -50%);
-}
-.side .modal .locationModal .overlayII .contentII .heading {
-  display: flex;
-  justify-content: center;
-  padding: 16px;
-  font-weight: 600;
-  border-bottom: 1.15px solid rgba(0, 0, 0, 0.08);
-}
-.side .modal .locationModal .overlayII .contentII .heading .x {
-  position: absolute;
-  right: 16px;
-  top: 16px;
-  cursor: pointer;
-}
-.side .modal .locationModal .overlayII .contentII .main {
-  padding: 32px;
-  display: flex;
-  flex-direction: column;
-}
-.side .modal .locationModal .overlayII .contentII .main span {
-  margin-bottom: 16px;
-}
-.side .modal .locationModal .overlayII .contentII .main input {
-  width: 496px;
-  height: 48px;
-  padding: 11px 39px 11px 15px;
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
-}
-.side .modal .locationModal .overlayII .contentII .main .arrow {
-  transform: rotate(90deg);
-  position: absolute;
-  top: 137px;
-  right: 40px;
-}
-.side .modal .locationModal .overlayII .contentII .main .arrow:hover {
-  cursor: pointer;
-}
-.side .modal .locationModal .overlayII .contentII .search {
-  height: 96px;
-  width: 560px;
-  padding: 24px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  bottom: 0;
-}
-.side .modal .locationModal .overlayII .contentII .search button {
-  width: 512px;
-  height: 48px;
-  padding: 12px 24px;
-  cursor: pointer;
-  background-color: var(--theme-color);
-  border-radius: 3px;
-  border: none;
-  font-weight: 600;
-  color: white;
-  font-size: 16px;
-}
-.side .modal .locationModal .overlayII .contentII .search button:hover {
-  background-color: #04b7b1;
-}
-.side .modal .timeModal .overlayIII {
-  width: 100vw;
-  height: 100vh;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  position: fixed;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 3;
-  animation: overlay 0.25s ease;
-}
-.side .modal .timeModal .overlayIII .contentIII {
-  position: fixed;
-  z-index: 4;
-  top: 50%;
-  left: 50%;
-  background-color: #ffffff;
-  border-radius: 3px;
-  width: 560px;
-  transform: translate(-50%, -50%);
-  animation: modalPopUp 0.4s ease-in-out;
-}
-.side .modal .timeModal .overlayIII .contentIII .heading {
-  padding: 16px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-bottom: 1.15px solid rgba(0, 0, 0, 0.08);
-}
-.side .modal .timeModal .overlayIII .contentIII .heading b {
-  padding: 0 16px 0 16px;
-}
-.side .modal .timeModal .overlayIII .contentIII .heading .x {
-  position: absolute;
-  right: 16px;
-  top: 16px;
-  cursor: pointer;
-}
-.side .modal .timeModal .overlayIII .contentIII .main {
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-}
-.side .modal .timeModal .overlayIII .contentIII .main label.now {
-  display: flex;
-  align-items: center;
-  width: 512px;
-  height: 40px;
-  cursor: pointer;
-}
-.side .modal .timeModal .overlayIII .contentIII .main label.now .now-space {
-  display: flex;
-  justify-content: space-between;
-  width: 478px;
-}
-.side .modal .timeModal .overlayIII .contentIII .main label.now .now-space span {
-  margin-left: 10px;
-}
-.side .modal .timeModal .overlayIII .contentIII .main label.now .now-space input {
-  display: none;
-}
-.side .modal .timeModal .overlayIII .contentIII .main label.now .now-space .nowRadioCover {
-  width: 20px;
-  height: 20px;
-  border: var(--choice);
-  border-radius: 50%;
-  padding: 3.25px;
-  margin-right: 2px;
-  transition: all 0.15s ease-out;
-}
-.side .modal .timeModal .overlayIII .contentIII .main label.now .now-space .nowRadioCover:hover {
-  border-color: var(--theme-color);
-}
-.side .modal .timeModal .overlayIII .contentIII .main label.now .now-space .nowRadioCover::after {
-  content: "";
-  border: var(--theme-color);
-  width: 100%;
-  height: 100%;
-  display: block;
-  background-color: var(--theme-color);
-  border-radius: 50%;
-  transform: scale(0);
-}
-.side .modal .timeModal .overlayIII .contentIII .main label.now .now-space input:checked + .nowRadioCover {
-  border: 2px solid var(--theme-color);
-  box-shadow: var(--box-shadow);
-}
-.side .modal .timeModal .overlayIII .contentIII .main label.now .now-space input:checked + .nowRadioCover::after {
-  transform: scale(1);
-}
-.side .modal .timeModal .overlayIII .contentIII .main label.later {
-  position: relative;
-  top: 13px;
-  padding: 25px 0 8px 0;
-  display: flex;
-  align-items: center;
-  width: 512px;
-  height: 40px;
-  border-top: 1.15px solid rgba(0, 0, 0, 0.08);
-  cursor: pointer;
-}
-.side .modal .timeModal .overlayIII .contentIII .main label.later .later-space {
-  display: flex;
-  justify-content: space-between;
-  width: 478px;
-}
-.side .modal .timeModal .overlayIII .contentIII .main label.later .later-space span {
-  margin-left: 12px;
-}
-.side .modal .timeModal .overlayIII .contentIII .main label.later .later-space input {
-  display: none;
-}
-.side .modal .timeModal .overlayIII .contentIII .main label.later .later-space .laterRadioCover {
-  width: 20px;
-  height: 20px;
-  border: var(--choice);
-  border-radius: 50%;
-  padding: 3.25px;
-  transition: all 0.15s ease-out;
-}
-.side .modal .timeModal .overlayIII .contentIII .main label.later .later-space .laterRadioCover:hover {
-  border-color: var(--theme-color);
-}
-.side .modal .timeModal .overlayIII .contentIII .main label.later .later-space .laterRadioCover::after {
-  content: "";
-  border: var(--theme-color);
-  width: 100%;
-  height: 100%;
-  display: block;
-  background-color: var(--theme-color);
-  border-radius: 50%;
-  transform: scale(0);
-}
-.side .modal .timeModal .overlayIII .contentIII .main label.later .later-space input:checked + .laterRadioCover {
-  border: 2px solid var(--theme-color);
-  box-shadow: var(--box-shadow);
-}
-.side .modal .timeModal .overlayIII .contentIII .main label.later .later-space input:checked + .laterRadioCover::after {
-  transform: scale(1);
-}
-.side .modal .timeModal .overlayIII .contentIII .main .twoSelect {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 35px 0 0 5px;
-}
-.side .modal .timeModal .overlayIII .contentIII .main .twoSelect label.day {
-  position: relative;
-}
-.side .modal .timeModal .overlayIII .contentIII .main .twoSelect label.day #day {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  width: 214px;
-  height: 48px;
-  border: var(--dashed);
-  border-radius: 4px;
-  font-size: 16px;
-  padding-left: 15px;
-  cursor: pointer;
-}
-.side .modal .timeModal .overlayIII .contentIII .main .twoSelect label.day .upDown {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-}
-.side .modal .timeModal .overlayIII .contentIII .main .twoSelect label.time {
-  position: relative;
-}
-.side .modal .timeModal .overlayIII .contentIII .main .twoSelect label.time #time {
-  position: relative;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  width: 282px;
-  height: 48px;
-  border: var(--dashed);
-  border-radius: 4px;
-  font-size: 16px;
-  padding-left: 20px;
-  cursor: pointer;
-}
-.side .modal .timeModal .overlayIII .contentIII .main .twoSelect label.time .upDown {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-}
-.side .modal .timeModal .overlayIII .contentIII .confirm {
-  width: 560px;
-  height: 96px;
-  padding: 24px;
-  position: absolute;
-  bottom: 0;
-  box-shadow: 0 -1px 4px 0 rgba(0, 0, 0, 0.08);
-  display: flex;
-}
-.side .modal .timeModal .overlayIII .contentIII .confirm button.cancel {
-  width: 193px;
-  height: 48px;
-  border: var(--dashed);
-  padding: 12px 24px;
-  background-color: white;
-  border-radius: 4px;
-  cursor: pointer;
-}
-.side .modal .timeModal .overlayIII .contentIII .confirm button.cancel:hover {
-  border: 1px solid rgb(211, 208, 208);
-}
-.side .modal .timeModal .overlayIII .contentIII .confirm button.cancel span {
-  color: var(--theme-color);
-  font-size: 16px;
-}
-.side .modal .timeModal .overlayIII .contentIII .confirm button.confirm {
-  width: 300px;
-  height: 48px;
-  border: none;
-  padding: 12px 24px;
-  background-color: #09ccc5;
-  border-radius: 4px;
-  cursor: pointer;
-  position: relative;
-  left: 16px;
-  display: inline;
-}
-.side .modal .timeModal .overlayIII .contentIII .confirm button.confirm:hover {
-  background-color: #04b7b1;
-}
-.side .modal .timeModal .overlayIII .contentIII .confirm button.confirm span {
-  color: white;
-  font-weight: 600;
-  font-size: 16px;
 }
 .side .gif-part {
   display: flex;
@@ -827,7 +370,6 @@ html {
   display: block;
   background-color: var(--theme-color);
   border-radius: 50%;
-  /* not make it appear */
   transform: scale(0);
 }
 .side .giveOrTake label input[type=radio]:checked + .radioCover {
@@ -846,8 +388,6 @@ html {
   overflow-y: scroll;
   overflow-x: hidden;
   padding: 0 16px 8px 0;
-  /* scroll div shadow */
-  /* scroll bar 部份 */
 }
 .side .scroll-part::-webkit-scrollbar {
   width: 6px;
@@ -858,8 +398,6 @@ html {
 }
 .side .scroll-part .sorting {
   width: 246px;
-  /* 每個sort 的 heading */
-  /* 每個sort hidden 的 drop-down list */
 }
 .side .scroll-part .sorting button.ranking {
   border: none;
@@ -897,7 +435,6 @@ html {
   padding: 8px;
   display: inline-flex;
   cursor: pointer;
-  /* radio csss */
 }
 .side .scroll-part .sorting .sorting-list .sorting-box label input[type=radio] {
   display: none;
@@ -937,7 +474,6 @@ html {
   height: 40px;
   position: relative;
   padding: 0 8px 8px 8px;
-  /* checkbox css */
 }
 .side .scroll-part .sorting .sorting-list .sorting-box label.wider input[type=checkbox] {
   padding: 3.25px;
@@ -967,13 +503,590 @@ html {
   left: 16px;
 }
 
-/* classic component */
+.modal {
+  position: absolute;
+}
+.modal .overlay {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  animation: overlay 0.25s ease;
+}
+.modal .overlay .content {
+  position: fixed;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  background-color: #ffffff;
+  border-radius: 3px;
+  padding: 24px;
+  transform: translate(-50%, -50%);
+  animation: modalPopUp 0.4s ease-in-out;
+}
+.modal .overlay .content .heading {
+  display: block;
+  padding-bottom: 16px;
+}
+.modal .overlay .content .x {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  cursor: pointer;
+}
+.modal .overlay .content .two-choices {
+  padding: 8px 0 32px;
+}
+.modal .overlay .content .two-choices label {
+  padding: 8px;
+  height: 36px;
+  width: 512px;
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.modal .overlay .content .two-choices label input {
+  display: none;
+}
+.modal .overlay .content .two-choices label .radioCoverII {
+  width: 20px;
+  height: 20px;
+  border: var(--choice);
+  border-radius: 50%;
+  padding: 3.25px;
+  margin-right: 8px;
+  transition: all 0.15s ease-out;
+}
+.modal .overlay .content .two-choices label .radioCoverII:hover {
+  border-color: var(--theme-color);
+}
+.modal .overlay .content .two-choices label .radioCoverII::after {
+  content: "";
+  border: var(--theme-color);
+  width: 100%;
+  height: 100%;
+  display: block;
+  background-color: var(--theme-color);
+  border-radius: 50%;
+  transform: scale(0);
+}
+.modal .overlay .content .two-choices label input[type=radio]:checked + .radioCoverII {
+  border: 2px solid var(--theme-color);
+  box-shadow: var(--box-shadow);
+}
+.modal .overlay .content .two-choices label input:checked + .radioCoverII::after {
+  transform: scale(1);
+}
+.modal .overlay .content .two-choices label span {
+  font-size: 14px;
+}
+.modal .overlay .content .modal-space {
+  display: flex;
+  align-items: center;
+  width: 512px;
+  height: 44px;
+  cursor: pointer;
+}
+.modal .overlay .content .modal-space .map {
+  margin-right: 16px;
+  margin-top: 3px;
+}
+.modal .overlay .content .modal-space .changeLocation {
+  display: flex;
+  justify-content: space-between;
+  width: 482px;
+  align-items: center;
+}
+.modal .overlay .content .modal-space .changeLocation .locationData {
+  display: flex;
+  flex-direction: column;
+}
+.modal .overlay .content .modal-space .changeLocation span.changeOrder {
+  color: var(--theme-color);
+  font-weight: 500;
+  cursor: pointer;
+}
+.modal .overlay .content .modal-time {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 24px 0;
+  width: 512px;
+  height: 72px;
+}
+.modal .overlay .content .modal-time .clock {
+  margin-right: 16px;
+  margin-top: 3px;
+}
+.modal .overlay .content .modal-time .time-span {
+  width: 482px;
+  display: flex;
+  justify-content: space-between;
+}
+.modal .overlay .content .modal-time span.changeOrder {
+  color: var(--theme-color);
+  font-weight: 500;
+  cursor: pointer;
+}
+.modal .overlay .content button.confirm {
+  width: 512px;
+  height: 48px;
+  margin-top: 24px;
+  cursor: pointer;
+  background-color: var(--theme-color);
+  border-radius: 3px;
+  border: none;
+}
+.modal .overlay .content button.confirm:hover {
+  background-color: #04b7b1;
+}
+.modal .overlay .content button.confirm span {
+  font-weight: 600;
+  color: white;
+  font-size: 16px;
+}
+.modal .locationModal .overlayII {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 3;
+  animation: overlay 0.25s ease;
+}
+.modal .locationModal .overlayII .contentII {
+  position: fixed;
+  z-index: 4;
+  width: 560px;
+  height: 280px;
+  top: 50%;
+  left: 50%;
+  background-color: #ffffff;
+  border-radius: 3px;
+  animation: modalPopUp 0.45s ease;
+  transform: translate(-50%, -50%);
+}
+.modal .locationModal .overlayII .contentII .heading {
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+  font-weight: 600;
+  border-bottom: 1.15px solid rgba(0, 0, 0, 0.08);
+}
+.modal .locationModal .overlayII .contentII .heading .x {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  cursor: pointer;
+}
+.modal .locationModal .overlayII .contentII .main {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+}
+.modal .locationModal .overlayII .contentII .main span {
+  margin-bottom: 16px;
+}
+.modal .locationModal .overlayII .contentII .main input {
+  width: 496px;
+  height: 48px;
+  padding: 11px 39px 11px 15px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+}
+.modal .locationModal .overlayII .contentII .main .arrow {
+  transform: rotate(90deg);
+  position: absolute;
+  top: 137px;
+  right: 6.5vh;
+}
+.modal .locationModal .overlayII .contentII .main .arrow:hover {
+  cursor: pointer;
+}
+.modal .locationModal .overlayII .contentII .search {
+  height: 96px;
+  width: 560px;
+  padding: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+}
+.modal .locationModal .overlayII .contentII .search button {
+  width: 512px;
+  height: 48px;
+  padding: 12px 24px;
+  cursor: pointer;
+  background-color: var(--theme-color);
+  border-radius: 3px;
+  border: none;
+  font-weight: 600;
+  color: white;
+  font-size: 16px;
+}
+.modal .locationModal .overlayII .contentII .search button:hover {
+  background-color: #04b7b1;
+}
+.modal .timeModal .overlayIII {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 3;
+  animation: overlay 0.25s ease;
+}
+.modal .timeModal .overlayIII .contentIII {
+  position: fixed;
+  z-index: 4;
+  top: 50%;
+  left: 50%;
+  background-color: #ffffff;
+  border-radius: 3px;
+  width: 560px;
+  transform: translate(-50%, -50%);
+  animation: modalPopUp 0.4s ease-in-out;
+}
+.modal .timeModal .overlayIII .contentIII .heading {
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1.15px solid rgba(0, 0, 0, 0.08);
+}
+.modal .timeModal .overlayIII .contentIII .heading b {
+  padding: 0 16px 0 16px;
+}
+.modal .timeModal .overlayIII .contentIII .heading .x {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  cursor: pointer;
+}
+.modal .timeModal .overlayIII .contentIII .main {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+.modal .timeModal .overlayIII .contentIII .main label.now {
+  display: flex;
+  align-items: center;
+  width: 512px;
+  height: 40px;
+  cursor: pointer;
+}
+.modal .timeModal .overlayIII .contentIII .main label.now .now-space {
+  display: flex;
+  justify-content: space-between;
+  width: 478px;
+}
+.modal .timeModal .overlayIII .contentIII .main label.now .now-space span {
+  margin-left: 10px;
+}
+.modal .timeModal .overlayIII .contentIII .main label.now .now-space input {
+  display: none;
+}
+.modal .timeModal .overlayIII .contentIII .main label.now .now-space .nowRadioCover {
+  width: 20px;
+  height: 20px;
+  border: var(--choice);
+  border-radius: 50%;
+  padding: 3.25px;
+  margin-right: 2px;
+  transition: all 0.15s ease-out;
+}
+.modal .timeModal .overlayIII .contentIII .main label.now .now-space .nowRadioCover:hover {
+  border-color: var(--theme-color);
+}
+.modal .timeModal .overlayIII .contentIII .main label.now .now-space .nowRadioCover::after {
+  content: "";
+  border: var(--theme-color);
+  width: 100%;
+  height: 100%;
+  display: block;
+  background-color: var(--theme-color);
+  border-radius: 50%;
+  transform: scale(0);
+}
+.modal .timeModal .overlayIII .contentIII .main label.now .now-space input:checked + .nowRadioCover {
+  border: 2px solid var(--theme-color);
+  box-shadow: var(--box-shadow);
+}
+.modal .timeModal .overlayIII .contentIII .main label.now .now-space input:checked + .nowRadioCover::after {
+  transform: scale(1);
+}
+.modal .timeModal .overlayIII .contentIII .main label.later {
+  position: relative;
+  top: 13px;
+  padding: 25px 0 8px 0;
+  display: flex;
+  align-items: center;
+  width: 512px;
+  height: 40px;
+  border-top: 1.15px solid rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+}
+.modal .timeModal .overlayIII .contentIII .main label.later .later-space {
+  display: flex;
+  justify-content: space-between;
+  width: 478px;
+}
+.modal .timeModal .overlayIII .contentIII .main label.later .later-space span {
+  margin-left: 12px;
+}
+.modal .timeModal .overlayIII .contentIII .main label.later .later-space input {
+  display: none;
+}
+.modal .timeModal .overlayIII .contentIII .main label.later .later-space .laterRadioCover {
+  width: 20px;
+  height: 20px;
+  border: var(--choice);
+  border-radius: 50%;
+  padding: 3.25px;
+  transition: all 0.15s ease-out;
+}
+.modal .timeModal .overlayIII .contentIII .main label.later .later-space .laterRadioCover:hover {
+  border-color: var(--theme-color);
+}
+.modal .timeModal .overlayIII .contentIII .main label.later .later-space .laterRadioCover::after {
+  content: "";
+  border: var(--theme-color);
+  width: 100%;
+  height: 100%;
+  display: block;
+  background-color: var(--theme-color);
+  border-radius: 50%;
+  transform: scale(0);
+}
+.modal .timeModal .overlayIII .contentIII .main label.later .later-space input:checked + .laterRadioCover {
+  border: 2px solid var(--theme-color);
+  box-shadow: var(--box-shadow);
+}
+.modal .timeModal .overlayIII .contentIII .main label.later .later-space input:checked + .laterRadioCover::after {
+  transform: scale(1);
+}
+.modal .timeModal .overlayIII .contentIII .main .twoSelect {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 35px 0 0 5px;
+}
+.modal .timeModal .overlayIII .contentIII .main .twoSelect label.day {
+  position: relative;
+}
+.modal .timeModal .overlayIII .contentIII .main .twoSelect label.day #day {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 214px;
+  height: 48px;
+  border: var(--dashed);
+  border-radius: 4px;
+  font-size: 16px;
+  padding-left: 15px;
+  cursor: pointer;
+}
+.modal .timeModal .overlayIII .contentIII .main .twoSelect label.day .upDown {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+}
+.modal .timeModal .overlayIII .contentIII .main .twoSelect label.time {
+  position: relative;
+}
+.modal .timeModal .overlayIII .contentIII .main .twoSelect label.time #time {
+  position: relative;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 282px;
+  height: 48px;
+  border: var(--dashed);
+  border-radius: 4px;
+  font-size: 16px;
+  padding-left: 20px;
+  cursor: pointer;
+}
+.modal .timeModal .overlayIII .contentIII .main .twoSelect label.time .upDown {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+}
+.modal .timeModal .overlayIII .contentIII .confirm {
+  width: 560px;
+  height: 96px;
+  padding: 24px;
+  position: absolute;
+  bottom: 0;
+  box-shadow: 0 -1px 4px 0 rgba(0, 0, 0, 0.08);
+  display: flex;
+}
+.modal .timeModal .overlayIII .contentIII .confirm button.cancel {
+  width: 193px;
+  height: 48px;
+  border: var(--dashed);
+  padding: 12px 24px;
+  background-color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.modal .timeModal .overlayIII .contentIII .confirm button.cancel:hover {
+  border: 1px solid rgb(211, 208, 208);
+}
+.modal .timeModal .overlayIII .contentIII .confirm button.cancel span {
+  color: var(--theme-color);
+  font-size: 16px;
+}
+.modal .timeModal .overlayIII .contentIII .confirm button.confirm {
+  width: 300px;
+  height: 48px;
+  border: none;
+  padding: 12px 24px;
+  background-color: #09ccc5;
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  left: 16px;
+  display: inline;
+}
+.modal .timeModal .overlayIII .contentIII .confirm button.confirm:hover {
+  background-color: #04b7b1;
+}
+.modal .timeModal .overlayIII .contentIII .confirm button.confirm span {
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.singleDiv {
+  display: flex;
+  flex-wrap: wrap;
+  width: 72.5vw;
+  margin-top: 28px;
+}
+.singleDiv .singleBox {
+  position: relative;
+  margin: 0 4px;
+  margin-bottom: 12px;
+  width: 300px;
+  height: 238px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+  border-radius: 4px;
+}
+.singleDiv .singleBox .banner {
+  position: absolute;
+  margin: 12px 160px 0 0;
+}
+.singleDiv .singleBox .banner .charge {
+  background-color: white;
+  color: #cc3a2f;
+  text-align: center;
+  padding: 2px 8px;
+  font-size: 12px;
+  border-radius: 0 2px 2px 0;
+  font-weight: 600;
+  float: left;
+}
+.singleDiv .singleBox .banner .discount {
+  background-color: #cc3a2f;
+  color: white;
+  text-align: center;
+  font-size: 12px;
+  padding: 2px 8px;
+  margin-bottom: 4px;
+  border-radius: 0 2px 2px 0;
+  font-weight: 600;
+  float: left;
+}
+.singleDiv .singleBox .banner .deliveroo {
+  background-color: var(--theme-color);
+  text-align: center;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 0 2px 2px 0;
+  font-weight: 600;
+  float: left;
+}
+.singleDiv .singleBox img {
+  width: 300px;
+  height: 60%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  position: absolute;
+  border-radius: 4px 4px 0 0;
+  z-index: -5;
+}
+.singleDiv .singleBox .deliveryTime {
+  position: absolute;
+  right: 0;
+  background-color: white;
+  top: 53%;
+  border-radius: 100px;
+  padding: 4px 18px;
+  margin-right: 18px;
+  box-shadow: 0 4px 14px -4px rgba(0, 0, 0, 0.0784313725);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.singleDiv .singleBox .deliveryTime .num {
+  font-weight: 600;
+}
+.singleDiv .singleBox .deliveryTime .min {
+  font-size: 14px;
+  font-weight: normal;
+}
+.singleDiv .singleBox .description {
+  position: absolute;
+  bottom: 0;
+  padding: 0 12px 12px 12px;
+}
+.singleDiv .singleBox .description p {
+  font-weight: 600;
+}
+.singleDiv .singleBox .description .rate {
+  display: flex;
+  align-items: center;
+  padding: 2px 0;
+}
+.singleDiv .singleBox .description .rate .mark,
+.singleDiv .singleBox .description .rate .comment {
+  margin-left: 4px;
+  font-size: 14px;
+}
+.singleDiv .singleBox .description .distance {
+  padding-top: 2px;
+}
+.singleDiv .singleBox .description .distance .num {
+  font-size: 14px;
+}
+
 .classicDiv {
-  margin-bottom: 24px;
   padding: 0 4px;
+  max-width: 72.5vw;
+  overflow: hidden;
+  position: relative;
+}
+.classicDiv .heading {
+  padding: 8px 0 2px 0;
 }
 .classicDiv .heading span {
-  padding-bottom: 6px;
+  padding-bottom: 5px;
 }
 .classicDiv .heading h3 {
   font-size: 22px;
@@ -986,13 +1099,19 @@ html {
   row-gap: 4px;
   grid-auto-flow: column;
   justify-content: start;
+  max-width: 72.5vw;
+  height: 260px;
+  transition: all 0.7s ease-in-out;
 }
 .classicDiv .classicCarousel .classicBox {
   position: relative;
   width: 262px;
   height: 238px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.0784313725), 0 0 0 1px rgba(0, 0, 0, 0.0392156863);
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
   border-radius: 4px;
+}
+.classicDiv .classicCarousel .classicBox:hover {
+  cursor: pointer;
 }
 .classicDiv .classicCarousel .classicBox .banner {
   position: absolute;
@@ -1081,29 +1200,119 @@ html {
 .classicDiv .classicCarousel .classicBox .description .distance .num {
   font-size: 14px;
 }
-.classicDiv .classicCarousel .classicBox .description .distance .dot {
-  margin: 0 4px;
+
+.caroRightBtn {
+  position: absolute;
+  transform: translateY(-50%);
+  top: 50%;
+  right: 0%;
+  border: none;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: white;
+  color: var(--theme-color);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
 }
-.classicDiv .classicCarousel .classicBox .description .distance .dFee {
-  font-size: 14px;
-  color: #cc3a2f;
+.caroRightBtn:hover {
+  cursor: pointer;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
 
-/* hot brand component */
+.caroLeftBtn {
+  position: absolute;
+  transform: translateY(-50%);
+  top: 50%;
+  z-index: 1;
+  left: 0%;
+  border: none;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: white;
+  color: var(--theme-color);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.caroLeftBtn:hover {
+  cursor: pointer;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
 .hotBrand {
-  margin-bottom: 28px;
   padding: 0 4px;
+  max-width: 72.5vw;
+  position: relative;
+  overflow: hidden;
 }
 .hotBrand h3 {
   font-size: 22px;
   font-weight: 700;
-  padding-bottom: 16px;
+  padding: 6px 0 16px 0;
 }
 .hotBrand .brandGrid {
-  height: 323px;
+  height: 210px;
+  max-width: 72.5vw;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: 93px 93px;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+  row-gap: 10px;
+  transition: all 0.5s ease-in-out;
+}
+.hotBrand .brandGrid .brandBox {
+  width: 340px;
+  height: 100px;
+  border-radius: 4px;
+  display: flex;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+.hotBrand .brandGrid .brandBox .img-part {
+  display: flex;
+  align-items: center;
+  height: 100px;
+  width: 91px;
+}
+.hotBrand .brandGrid .brandBox .img-part img {
+  width: 91px;
+  height: 90px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 4px;
+}
+.hotBrand .brandGrid .brandBox .word-part {
+  width: 265px;
+  height: 100px;
+  padding: 12px;
+}
+.hotBrand .brandGrid .brandBox .word-part span.name {
+  font-size: 16px;
+  font-weight: 700;
+  display: block;
+}
+.hotBrand .brandGrid .brandBox .word-part .sec {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  padding: 2px 0;
+}
+.hotBrand .brandGrid .brandBox .word-part .time {
+  margin-left: 13px;
+}
+.hotBrand .brandGrid .brandBox .word-part .discount {
+  color: #cc3a2f;
+  font-size: 14px;
 }
 
-/* login page */
 .login {
   display: flex;
   justify-content: center;
@@ -1225,9 +1434,376 @@ html {
   color: var(--theme-color);
 }
 
-/* hide responsive top div */
+.cart-page a {
+  text-decoration: none;
+  display: flex;
+  width: 128px;
+}
+.cart-page a span.return {
+  color: var(--theme-color);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 16px 0 0 64px;
+}
+.cart-page .restInfo {
+  padding: 16px 64px 32px 64px;
+  display: flex;
+  gap: 1.5rem;
+}
+.cart-page .restInfo img {
+  width: 23vw;
+  max-height: 222px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  border-radius: 4px;
+}
+.cart-page .restInfo h1 {
+  font-size: 40px;
+}
+.cart-page .restInfo .line1,
+.cart-page .restInfo .line2 {
+  padding-top: 0.5rem;
+}
+.cart-page .restInfo .line3 {
+  padding-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 7rem;
+}
+.cart-page .restInfo .deliverBox {
+  margin-left: auto;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding-top: 1rem;
+}
+.cart-page .restInfo .deliverBox img {
+  width: 1.8rem;
+  border: none;
+  box-shadow: none;
+}
+.cart-page .restInfo .deliverBox .change {
+  color: var(--theme-color);
+}
+.cart-page .restInfo .deliverBox .change:hover {
+  cursor: pointer;
+}
+.cart-page nav {
+  border-top: var(--dashed);
+  border-bottom: var(--dashed);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: white;
+}
+.cart-page nav ul {
+  padding: 0 4rem;
+  margin: 1.5rem 0;
+  display: flex;
+  justify-content: space-evenly;
+}
+.cart-page nav ul a {
+  width: -moz-max-content;
+  width: max-content;
+  margin: 0 2rem;
+  padding: 0.15rem 0.5rem;
+  color: var(--theme-color);
+}
+.cart-page nav ul a:hover {
+  cursor: pointer;
+  color: #07e4d2;
+}
+.cart-page nav ul a li {
+  list-style: none;
+}
+.cart-page nav ul .active {
+  background-color: var(--theme-color);
+  border-radius: 20px;
+  color: white;
+  font-weight: 700;
+}
+.cart-page nav ul .active:hover {
+  color: white;
+}
+.cart-page nav ul .more {
+  color: var(--theme-color);
+  display: none;
+  align-items: center;
+  position: absolute;
+  right: 8%;
+  padding: 0.15rem 0;
+}
+.cart-page nav ul .more:hover {
+  cursor: pointer;
+}
+.cart-page .main {
+  padding: 0 2rem;
+  background-color: rgba(0, 0, 0, 0.04);
+  display: flex;
+  gap: 2rem;
+}
+.cart-page .main .menu {
+  width: 60vw;
+}
+.cart-page .main .menu .hot-pick h2 {
+  padding: 1rem 0;
+  font-size: 22px;
+}
+.cart-page .main .menu .hot-pick .carousel {
+  overflow: hidden;
+  width: 60vw;
+  height: 37.5vh;
+  position: relative;
+}
+.cart-page .main .menu .hot-pick .carousel .carouselBox {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 1rem;
+  transition: all 0.35s ease-in-out;
+}
+.cart-page .main .menu .hot-pick .carousel .carouselBox .card {
+  background-color: white;
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  width: 9vw;
+  height: 36vh;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.cart-page .main .menu .hot-pick .carousel .carouselBox .card:hover {
+  cursor: pointer;
+}
+.cart-page .main .menu .hot-pick .carousel .carouselBox .card img {
+  width: 9vw;
+  height: 16vh;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.cart-page .main .menu .hot-pick .carousel .carouselBox .card .description {
+  padding: 0.5rem;
+}
+.cart-page .main .menu .hot-pick .carousel .carouselBox .card .description .name {
+  font-weight: 600;
+  font-size: 14px;
+  display: block;
+}
+.cart-page .main .menu .hot-pick .carousel .carouselBox .card .description .price {
+  color: grey;
+  position: absolute;
+  bottom: 18%;
+  font-size: 14px;
+}
+.cart-page .main .menu .hot-pick .carousel .carouselBox .card .btn {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0.5rem;
+}
+.cart-page .main .menu .hot-pick .carousel .carouselBox .card .btn button {
+  border: var(--dashed);
+  width: 100%;
+  height: 2.25rem;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cart-page .main .menu .hot-pick .carousel .carouselBox .card .btn button:hover {
+  border: 1px solid rgb(208, 207, 207);
+  cursor: pointer;
+}
+.cart-page .main .menu .hot-pick .carousel .carouselBox .card .btn button .plus {
+  color: var(--theme-color);
+}
+.cart-page .main .menu .cartClassic h2 {
+  padding: 1.5rem 0;
+}
+.cart-page .main .menu .cartClassic .cartGrid {
+  width: 60vw;
+  display: grid;
+  grid-template-columns: 29.5vw 29.5vw;
+  gap: 1rem;
+}
+.cart-page .main .menu .cartClassic .cartGrid .gridBox {
+  width: 100%;
+  height: 132px;
+  background-color: white;
+  padding: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  transition: all 0.2s ease-in-out;
+}
+.cart-page .main .menu .cartClassic .cartGrid .gridBox:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  cursor: pointer;
+}
+.cart-page .main .menu .cartClassic .cartGrid .gridBox .wordy span {
+  font-size: 14px;
+  margin: 0.75rem 0;
+}
+.cart-page .main .menu .cartClassic .cartGrid .gridBox .wordy .hk {
+  font-weight: 600;
+  display: block;
+}
+.cart-page .main .menu .cartClassic .cartGrid .gridBox .wordy .en {
+  font-weight: 500;
+  display: block;
+}
+.cart-page .main .menu .cartClassic .cartGrid .gridBox img {
+  width: 100px;
+  height: 100px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 4px;
+  margin-left: auto;
+}
+.cart-page .main .menu .cartClassic .cartGrid .gridBox .btn {
+  margin-left: 1rem;
+  width: 40px;
+  height: 100px;
+  border: var(--dashed);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cart-page .main .menu .cartClassic .cartGrid .gridBox .btn:hover {
+  border: 1px solid rgb(208, 207, 207);
+}
+.cart-page .main .cartItem {
+  background-color: white;
+  margin-top: 3.8rem;
+  border: var(--dashed);
+  border-radius: 4px;
+  width: 30vw;
+  height: 226px;
+  position: sticky;
+  top: 18%;
+}
+.cart-page .main .cartItem .cartTop {
+  padding: 2rem 1rem 1.5rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 130px;
+}
+.cart-page .main .cartItem .cartTop p {
+  color: #abadad;
+  padding-top: 4px;
+}
+.cart-page .main .cartItem .cartBtn {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  padding: 1rem;
+  justify-content: center;
+  width: 100%;
+  height: 80px;
+}
+.cart-page .main .cartItem .cartBtn button {
+  width: 100%;
+  background-color: #e2e5e5;
+  border: none;
+  border-radius: 4px;
+}
+.cart-page .main .cartItem .cartBtn button span {
+  font-size: 16px;
+  font-weight: 700;
+  color: #abadad;
+}
+
 .responsiveTop {
   display: none;
+}
+
+.footer {
+  width: 100%;
+  height: 411px;
+  background-color: rgb(46, 51, 51);
+  position: absolute;
+  bottom: auto;
+  margin-top: 20px;
+}
+.footer .boxes {
+  display: flex;
+  padding: 24px 0px;
+  align-items: center;
+  justify-content: center;
+}
+.footer .boxes .box {
+  width: 40vw;
+  height: 315px;
+  background-color: rgba(255, 255, 255, 0.1);
+  margin-left: 16px;
+  padding: 24px;
+}
+.footer .boxes .box h3 {
+  padding-bottom: 8px;
+  color: white;
+}
+.footer .boxes .box a {
+  margin-bottom: 9px;
+  font-size: 14px;
+  display: block;
+  text-decoration: none;
+  color: white;
+}
+.footer .boxes .box a:hover {
+  color: var(--theme-color);
+}
+.footer .boxes .download {
+  margin-right: 16px;
+}
+.footer .boxes .download .two {
+  display: flex;
+  gap: 20px;
+}
+.footer .boxes .download .two img {
+  width: 135px;
+  height: 40px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.footer .boxes .two {
+  display: flex;
+  flex-direction: column;
+}
+.footer .deepDown {
+  display: flex;
+  justify-content: space-between;
+}
+.footer .deepDown .threeLogos {
+  margin-left: 16px;
+  width: 104px;
+  display: flex;
+  justify-content: space-between;
+}
+.footer .deepDown .threeLogos .fb:hover {
+  cursor: pointer;
+  fill: #3b5998;
+}
+.footer .deepDown .threeLogos .twit:hover {
+  cursor: pointer;
+  fill: #1da1f2;
+}
+.footer .deepDown .threeLogos .ig:hover {
+  cursor: pointer;
+  fill: #d6249f;
+}
+.footer .deepDown span {
+  margin-right: 16px;
+  font-size: 14px;
+  color: #a3afaf;
 }
 
 @keyframes modalPopUp {
@@ -1264,20 +1840,79 @@ html {
     transform: translateX(0%);
   }
 }
-@media (max-width: 960px) {
+@media (max-width: 1420px) {
+  .home .result .topCatContainer .catBtn {
+    display: block;
+  }
+  .cart-page nav ul a.dessert {
+    display: none;
+  }
+  .cart-page nav ul li.more {
+    display: flex;
+  }
+}
+@media (max-width: 1055px) {
   .navCart {
     display: none;
   }
 }
-@media (max-width: 785px) {
+@media (max-width: 1160px) {
+  a.drinks {
+    display: none;
+  }
+  a.fry {
+    display: none;
+  }
+}
+@media (max-width: 840px) {
   .searchBarBox * {
     display: none;
+  }
+  a.burger {
+    display: none;
+  }
+  .result .responsiveTop {
+    display: flex;
+    margin: 0;
+    padding: 16px 0 0 8px;
+    position: sticky;
+    bottom: 0;
+    width: 100vw;
+    height: 123px;
+    background-color: rgb(255, 252, 252);
+    border-bottom: 2px solid var(--dashed);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.0784313725);
+  }
+  .result .responsiveTop .content {
+    border-bottom: 2px solid var(--dashed);
+  }
+  .result .responsiveTop .content .header {
+    display: flex;
+  }
+  .result .responsiveTop .content .header:hover {
+    cursor: pointer;
+  }
+  .result .responsiveTop .content .header .word .top span {
+    font-size: 14px;
+  }
+  .result .responsiveTop .content .header .word .bottom {
+    display: flex;
+    align-items: center;
+  }
+  .result .responsiveTop .content .header .word .bottom span.to {
+    font-weight: 700;
+  }
+  .result .responsiveTop .content .header .word .bottom .down {
+    margin-left: 4px;
   }
   .navBar .logo-box .logo {
     padding-left: 16px;
   }
   .side {
     display: none;
+  }
+  .home .result .classicDiv {
+    max-width: 94vw;
   }
   .home .result .classicDiv .heading {
     display: flex;
@@ -1287,51 +1922,151 @@ html {
     font-size: 16px;
     padding-bottom: 12px;
   }
-  .home .result .allTopCat {
-    overflow-x: auto;
+  .home .result .topCatContainer .catBtn {
+    display: none;
   }
-  .home .result .ads-part {
+  .home .result .topCatContainer .allTopCat {
     overflow-x: auto;
-    margin: 12px 0 12px 0;
+    max-width: 94vw;
+  }
+  .home .result .adsContainer {
+    width: auto;
+  }
+  .home .result .adsContainer .ads-part {
+    overflow-x: auto;
+    min-width: 94vw;
+    margin: 18px 0 8px 0;
+    height: 195px;
   }
   .home .result .classicCarousel {
     overflow-x: auto;
+    max-width: 94vw;
+  }
+  .footer {
+    height: auto;
+  }
+  .footer .boxes {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .footer .boxes .box {
+    margin: 0;
+    padding: 10px;
+  }
+  .footer .boxes .download {
+    margin-right: 0;
+  }
+  .footer .deepDown {
+    margin-bottom: 3.5vh;
   }
   h3.deliverTo {
     display: none;
   }
-  .responsiveTop {
+  .home .result {
+    padding-top: 0;
+  }
+  .home .hotBrand {
+    max-width: 94vw;
+  }
+  .home .hotBrand .brandGrid {
+    max-width: 94vw;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+  .navBar ul.navList {
+    margin-right: 16px;
+  }
+  .singleDiv {
+    width: 100vw;
+    gap: 1.25vh;
     display: flex;
-    margin: 0 16px;
-    padding: 12px 16px 8px 0;
-    background-color: red;
-    position: sticky;
-    width: 100vh;
-    height: 115px;
+    justify-content: center;
   }
-  .responsiveTop .content {
-    border-bottom: 2px solid var(--dashed);
+  .singleDiv .singleBox {
+    max-width: 94vw;
+    margin-right: 6vw;
   }
-  .responsiveTop .header {
-    display: flex;
+  .singleDiv .singleBox img {
+    max-width: 100%;
   }
-  .responsiveTop .header .word .top span {
-    font-size: 14px;
+  .result .caroLeftBtn {
+    display: none;
   }
-  .responsiveTop .header .word .bottom {
-    display: flex;
-    align-items: center;
-  }
-  .responsiveTop .header .word .bottom span.to {
-    font-weight: 700;
-  }
-  .responsiveTop .header .word .bottom .down {
-    margin-left: 4px;
+  .result .caroRightBtn {
+    display: none;
   }
 }
 @media (max-width: 570px) {
   .navLogin {
     display: none;
+  }
+  .modal .overlay .content {
+    width: 100vw;
+    height: 100vh;
+    padding-left: 10vw;
+  }
+  .modal .overlay .content .two-choices {
+    padding: 20px 0 32px 0;
+  }
+  .modal .overlay .content .two-choices label {
+    padding: 0;
+    height: 50px;
+  }
+  .modal .overlay .content .modal-space .changeLocation {
+    width: 70vw;
+  }
+  .modal .overlay .content .modal-time .time-span {
+    width: 70vw;
+  }
+  .modal .overlay .content button.confirm {
+    width: 80vw;
+    margin-left: auto;
+  }
+  .modal .locationModal .overlayII .contentII {
+    width: 100vw;
+    height: 100vh;
+  }
+  .modal .locationModal .overlayII .contentII label.main input {
+    width: 85vw;
+    margin-right: 10vw;
+  }
+  .modal .locationModal .overlayII .contentII .search {
+    width: 100vw;
+  }
+  .modal .locationModal .overlayII .contentII .search button {
+    width: 65vw;
+  }
+  .modal .timeModal .contentIII {
+    position: relative;
+    background-color: #ffffff;
+    border-radius: 3px;
+    width: 100vw !important;
+    height: 100vh !important;
+  }
+  .modal .timeModal .contentIII .main {
+    padding: 4vw;
+  }
+  .modal .timeModal .contentIII .main label.now {
+    width: 92vw;
+  }
+  .modal .timeModal .contentIII .main label.later {
+    width: 92vw;
+  }
+  .modal .timeModal .contentIII .main .twoSelect {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5vh;
+    margin-top: 55px;
+  }
+  .modal .timeModal .contentIII .main .twoSelect label.day #day {
+    width: 80vw;
+  }
+  .modal .timeModal .contentIII .main .twoSelect label.time #time {
+    width: 80vw;
+  }
+  .modal .timeModal .contentIII div.confirm {
+    width: 100vw;
   }
 }
 @media (max-width: 375px) {

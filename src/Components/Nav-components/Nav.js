@@ -4,15 +4,19 @@ import { Basket, HouseLine, User, Bag, X } from "@phosphor-icons/react";
 import SearchBar from "./SearchBar";
 import { ShopContext } from "../../Context/CreateContext";
 import Account from "../Account-components/Account";
+import Modal from "../Side-components/Modal";
+import ResponsiveTop from "../Side-components/ResponsiveTop";
 
 const Nav = () => {
   const number = 108;
   const checkOutAmount = number.toFixed(2);
-  const { login, loginPage, setLoginPage, acModal, clickedAc, modalStyle } =
+  const { login, loginPage, setLoginPage, acModal, clickedAc, modalStyle, modal } =
     useContext(ShopContext);
 
   return (
     <div className="navBar">
+      
+
       {/* logo 部份 */}
       <div className="logo-box">
         <Link to="/" className="logo" onClick={() => setLoginPage(false)}>
@@ -29,7 +33,7 @@ const Nav = () => {
       {/* 結算, login, 帳戶部份 */}
       <ul className="navList">
         {!loginPage && (
-          <Link to="/cart">
+          <Link to="/Cart">
             <li className="navCart">
               <Basket className="listIcon" size={18} />
               <span>${checkOutAmount}</span>
@@ -80,7 +84,12 @@ const Nav = () => {
             <span>註冊或登入</span>
           </Link>
         </div>
+
+        
       </div>
+
+      {modal && <Modal />}
+      <ResponsiveTop />
     </div>
   );
 };

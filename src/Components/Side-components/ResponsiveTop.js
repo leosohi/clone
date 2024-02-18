@@ -3,13 +3,13 @@ import { ShopContext } from "../../Context/CreateContext";
 import { CaretDown } from "@phosphor-icons/react";
 
 const ResponsiveTop = () => {
-  const { deliveryTime, deliverTo, setBaggie, setBike, Lottie, delivery } =
+  const { deliveryTime, deliverTo, setBaggie, setBike, Lottie, delivery, changeInfo } =
     useContext(ShopContext);
     
   return (
     <div className="responsiveTop">
       <div className="content">
-        <div className="header">
+        <div className="header" onClick={changeInfo}>
           {delivery && <Lottie options={setBike} height={40} width={50} />}
           {!delivery && (
             <Lottie

@@ -1,10 +1,12 @@
 import React from "react";
 import {EnvelopeSimple, FacebookLogo} from "@phosphor-icons/react";
 import google_pic from "../Assets/google_svg.png";
+import Footer from "../Components/Footer";
 
 const Login = () => {
   return (
     <div className="login">
+
       <div className="center">
         
         <p>註冊或登入</p>
@@ -29,8 +31,8 @@ const Login = () => {
           <a href="#">私隱政策</a>。
         </span>
 
-
       </div>
+      
     </div>
   );
 };
