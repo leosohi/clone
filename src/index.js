@@ -10,7 +10,7 @@ import "./Styles/styles.css";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <ShopContextProvider>
-  <BrowserRouter>
+  <BrowserRouter basename={process.env.PUBLIC_URL}>
     <App />
   </BrowserRouter>
   </ShopContextProvider>
