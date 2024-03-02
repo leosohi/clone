@@ -12,7 +12,7 @@ const FoodItemData = [
     hot: true,
     set: true,
     nameHK: "芝士漢堡套餐",
-    nameEN: "Chesse Burger Set",
+    nameEN: "Cheese Burger Set",
     price: 41,
   },
   {

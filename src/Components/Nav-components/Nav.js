@@ -1,25 +1,44 @@
-import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
-import { Basket, HouseLine, User, Bag, X } from "@phosphor-icons/react";
-import SearchBar from "./SearchBar";
+import React, { useContext, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { HouseLine, User, Bag, X } from "@phosphor-icons/react";
 import { ShopContext } from "../../Context/CreateContext";
 import Account from "../Account-components/Account";
 import Modal from "../Side-components/Modal";
 import ResponsiveTop from "../Side-components/ResponsiveTop";
+import SearchBar from "../Nav-components/SearchBar";
 
 const Nav = () => {
-  const number = 108;
-  const checkOutAmount = number.toFixed(2);
-  const { login, loginPage, setLoginPage, acModal, clickedAc, modalStyle, modal } =
-    useContext(ShopContext);
+  const {
+    acModal,
+    clickedAc,
+    modalStyle,
+    modal,
+    searchBar,
+    setSearchBar,
+    setCartItem,
+    emptyCart,
+  } = useContext(ShopContext);
+
+  /* empty cart, disable searchBar */
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname !== "/Cart") {
+      setCartItem(emptyCart);
+    }
+
+    if (location.pathname === "/") {
+      setSearchBar(true);
+    } else {
+      setSearchBar(false);
+    }
+  }, [location]);
 
   return (
     <div className="navBar">
-      
-
       {/* logo 部份 */}
       <div className="logo-box">
-        <Link to="/" className="logo" onClick={() => setLoginPage(false)}>
+        <Link to="/" className="logo">
           <Bag className="bag" size={32} weight="fill" />
           <p className="logo-name">
             <span className="eng">Kangaroo</span>
@@ -27,21 +46,13 @@ const Nav = () => {
           </p>
         </Link>
       </div>
+
       {/* search bar 部份 */}
-      {!loginPage && <SearchBar />}
+      {searchBar && <SearchBar />}
 
-      {/* 結算, login, 帳戶部份 */}
+      {/* login, 帳戶部份 */}
       <ul className="navList">
-        {!loginPage && (
-          <Link to="/Cart">
-            <li className="navCart">
-              <Basket className="listIcon" size={18} />
-              <span>${checkOutAmount}</span>
-            </li>
-          </Link>
-        )}
-
-        <Link to="/login" onClick={() => login()}>
+        <Link to="/login">
           <li className="navLogin">
             <HouseLine className="listIcon" size={18} />
             <span>註冊或登入</span>
@@ -78,14 +89,12 @@ const Nav = () => {
             to="/login"
             className="login"
             onClick={() => {
-              acModal(); login();
+              acModal();
             }}
           >
             <span>註冊或登入</span>
           </Link>
         </div>
-
-        
       </div>
 
       {modal && <Modal />}

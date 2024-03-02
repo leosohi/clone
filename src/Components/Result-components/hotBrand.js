@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { Star, ArrowLeft, ArrowRight } from "@phosphor-icons/react";
 import coffee from "../../Assets/no-pic.jpg";
+import { useNavigate } from 'react-router-dom';
 
 const HotBrand = ({ data }) => {
   const [translation, setTranslation] = useState(0);
   const [clickCount, setClickCount] = useState(0);
+  const navigate = useNavigate();
 
   const moveRight = () => {
     if (clickCount < 2) {
@@ -20,6 +22,11 @@ const HotBrand = ({ data }) => {
     }
   };
 
+  /* navigate */
+  const toRest = (id) => {
+    navigate(`/Cart/${id}`);
+  };
+
   const style = { transform: `translateX(${translation}px)` };
   return (
     <div className="hotBrand">
@@ -32,7 +39,7 @@ const HotBrand = ({ data }) => {
       </button>}
       <div className="brandGrid" style={style}>
         {data.map((data) => (
-          <div className="brandBox">
+          <div className="brandBox" onClick={() => toRest(data.id)}>
             <div className="img-part">
               <img src={coffee} alt={data.name} />
             </div>
@@ -62,7 +69,7 @@ const HotBrand = ({ data }) => {
                 <span className="time">{data.time} 分鐘</span>
               </div>
 
-              {data.discount != "免運費" ? (
+              {data.discount !== "免運費" ? (
                 <span className="discount">全單{data.discount}%折扣</span>
               ) : (
                 <span className="discount">"免運費"</span>

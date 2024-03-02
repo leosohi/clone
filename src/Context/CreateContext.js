@@ -3,7 +3,7 @@ import baggie from "../Assets/gif/baggie.json";
 import bike from "../Assets/gif/bike.json";
 import Lottie from "react-lottie";
 import { AllRestaurantData } from "../Sorting/AllRestaurantData";
-import { useNavigate } from "react-router-dom";
+import { FoodItemData } from "../Sorting/FoodItemData";
 
 export const ShopContext = createContext(null);
 
@@ -19,18 +19,88 @@ export const ShopContextProvider = (props) => {
   const [deliveryTime, setDeliveryTime] = useState("現在");
   const [locationModal, setLocationModal] = useState(false);
   const [timeModal, setTimeModal] = useState(false);
-  const [loginPage, setLoginPage] = useState(false);
   const [clickedAc, setClickedAc] = useState(false);
   const [PlaceSelected, setPlaceSelected] = useState("你的位置");
-  
+  const [oneModal, setOneModal] = useState(false);
+  const [searchBar, setSearchBar] = useState(true);
+  const [tips, setTips] = useState(0);
+
+  /* tips */
+  const addTips = () => {
+    setTips((prev) => prev + 5);
+  };
+
+  const removeTips = () => {
+    if (tips >= 5) {
+      setTips((prev) => prev - 5);
+    }
+  };
+
+  /* add & remove by small btn */
+  const addToCart = (id) => {
+    setCartItem((prev) => ({ ...prev, [id]: prev[id] + 1 }));
+  };
+
+  const removeFromCart = (id) => {
+    setCartItem((prev) => ({ ...prev, [id]: prev[id] - 1 }));
+  };
+
+  /* cart logic*/
+  const emptyCart = () => {
+    let cart = {};
+    for (let i = 1; i < FoodItemData.length + 1; i++) {
+      cart[i] = 0;
+    }
+    return cart;
+  };
+
+  const [cartItem, setCartItem] = useState(emptyCart());
+
+  const cartItemCount = () => {
+    let total = 0;
+    for (const itemCount in cartItem) {
+      total += cartItem[itemCount];
+    }
+    return total;
+  };
+
+  const itemCount = cartItemCount();
+
+  /* total amount */
+  const lootTotal = () => {
+    let total = 0;
+    for (const item in cartItem) {
+      if (cartItem[item] > 0) {
+        let itemInfo = FoodItemData.find((data) => data.id === Number(item));
+        total += cartItem[item] * itemInfo.price;
+      }
+    }
+    return total;
+  };
+
+  const total = lootTotal();
+
+  /* open & close  one-modal */
+  const showOneModal = (id) => {
+    setOneModal(id);
+    setScroll(!scroll);
+  };
+
+  const closeOneModal = () => {
+    setOneModal(false);
+    setScroll(!scroll);
+  };
 
   /* Filtered Array */
   const nearDiscount = AllRestaurantData.filter((data) => data.distance < 1);
+
   const nearDiscountClassic = nearDiscount.slice(0, 9);
 
   const allDiscount = AllRestaurantData.filter((data) => data.discount);
 
-  const kangarooMarket = AllRestaurantData.filter((data)=> data.name === "Kangaroo HOP 待待超市")
+  const kangarooMarket = AllRestaurantData.filter(
+    (data) => data.name === "Kangaroo HOP 待待超市"
+  );
 
   const grocery = AllRestaurantData.filter((data) =>
     data.美食類型.includes("生活百貨")
@@ -119,11 +189,6 @@ export const ShopContextProvider = (props) => {
     setScroll(!scroll);
   };
 
-  /* 進入登入頁面 */
-  const login = () => {
-    setLoginPage(true);
-  };
-
   /* change location and time modal pop */
   const changeLocation = () => {
     setLocationModal(!locationModal);
@@ -207,9 +272,6 @@ export const ShopContextProvider = (props) => {
     changeTime,
     locationModal,
     timeModal,
-    login,
-    loginPage,
-    setLoginPage,
     acModal,
     clickedAc,
     modalStyle,
@@ -238,6 +300,21 @@ export const ShopContextProvider = (props) => {
     grocery,
     randomRest,
     kangarooMarket,
+    oneModal,
+    showOneModal,
+    closeOneModal,
+    cartItem,
+    setCartItem,
+    total,
+    addToCart,
+    removeFromCart,
+    emptyCart,
+    setSearchBar,
+    searchBar,
+    itemCount,
+    addTips,
+    removeTips,
+    tips
   };
 
   return (

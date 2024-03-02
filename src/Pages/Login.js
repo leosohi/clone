@@ -1,7 +1,6 @@
 import React from "react";
 import {EnvelopeSimple, FacebookLogo} from "@phosphor-icons/react";
 import google_pic from "../Assets/google_svg.png";
-import Footer from "../Components/Footer";
 
 const Login = () => {
   return (

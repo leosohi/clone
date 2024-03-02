@@ -63,7 +63,7 @@ const AllRestaurantData = [
   },
   {
     id: 5,
-    name: "莊意麵 Chong Noddle",
+    name: "莊意麵 Chong Noodle",
     img: more,
     hot: true,
     mark: 4.6,

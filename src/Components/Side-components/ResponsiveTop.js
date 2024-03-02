@@ -1,11 +1,18 @@
 import React, { useContext } from "react";
 import { ShopContext } from "../../Context/CreateContext";
-import { CaretDown } from "@phosphor-icons/react";
+import { CaretDown, Sliders, MagnifyingGlass } from "@phosphor-icons/react";
 
 const ResponsiveTop = () => {
-  const { deliveryTime, deliverTo, setBaggie, setBike, Lottie, delivery, changeInfo } =
-    useContext(ShopContext);
-    
+  const {
+    deliveryTime,
+    deliverTo,
+    setBaggie,
+    setBike,
+    Lottie,
+    delivery,
+    changeInfo,
+  } = useContext(ShopContext);
+
   return (
     <div className="responsiveTop">
       <div className="content">
@@ -28,6 +35,14 @@ const ResponsiveTop = () => {
               <span className="to">{deliverTo}</span>
               <CaretDown size={18} color="#08c1bb" className="down" />
             </div>
+          </div>
+        </div>
+
+        <div className="lower">
+          <MagnifyingGlass size={18} className="glass"/>
+          <input type="text" placeholder="餐廳、生活百貨、菜式"/>
+          <div className="filter">
+            <Sliders size={18} color="#08c1bb"/>
           </div>
         </div>
       </div>

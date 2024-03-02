@@ -1,11 +1,18 @@
 import React from 'react'
 import { Star } from '@phosphor-icons/react'
+import { useNavigate } from 'react-router-dom'
 
 const SingleDiv = ({data}) => {
+  const navigate = useNavigate();
+
+  const toRest = (id) => {
+    navigate(`/Cart/${id}`);
+  };
+
   return (
     <div className='singleDiv'>
         {data.map((data) => (
-          <div className="singleBox">
+          <div className="singleBox" onClick={() => toRest(data.id)}>
             <div className="banner">
               {data.charge && (
                 <span className="charge">消費滿${data.charge}</span>
