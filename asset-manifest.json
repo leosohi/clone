@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "https://leosohi.github.io/leosohi.github.io/static/css/main.5d4c2373.css",
-    "main.js": "https://leosohi.github.io/leosohi.github.io/static/js/main.77400ffe.js",
-    "static/media/burge.jpg": "https://leosohi.github.io/leosohi.github.io/static/media/burge.33faf17340e85f3850a8.jpg",
-    "static/media/salefood.jpg": "https://leosohi.github.io/leosohi.github.io/static/media/salefood.25d9dc64f0addafd3dc1.jpg",
-    "static/media/more.jpg": "https://leosohi.github.io/leosohi.github.io/static/media/more.8f9065490805ab2b672b.jpg",
-    "static/media/fullBag.jpg": "https://leosohi.github.io/leosohi.github.io/static/media/fullBag.e0077e5913a3da6715b7.jpg",
-    "static/media/bike.jpg": "https://leosohi.github.io/leosohi.github.io/static/media/bike.d861aba07b1a2d122383.jpg",
-    "static/media/google_svg.png": "https://leosohi.github.io/leosohi.github.io/static/media/google_svg.0ef0120c49c28510a465.png",
-    "static/media/no-pic.jpg": "https://leosohi.github.io/leosohi.github.io/static/media/no-pic.02553c8ea1ea71142f7f.jpg",
-    "static/media/google-play.png": "https://leosohi.github.io/leosohi.github.io/static/media/google-play.8f1f863c491d3edef4dc.png",
-    "static/media/apple.svg": "https://leosohi.github.io/leosohi.github.io/static/media/apple.c192f2fdf7eaf0429cb6b8e9565177a2.svg",
-    "index.html": "https://leosohi.github.io/leosohi.github.io/index.html",
-    "main.5d4c2373.css.map": "https://leosohi.github.io/leosohi.github.io/static/css/main.5d4c2373.css.map",
-    "main.77400ffe.js.map": "https://leosohi.github.io/leosohi.github.io/static/js/main.77400ffe.js.map"
+    "main.css": "/clone/static/css/main.5d4c2373.css",
+    "main.js": "/clone/static/js/main.11a13b04.js",
+    "static/media/burge.jpg": "/clone/static/media/burge.33faf17340e85f3850a8.jpg",
+    "static/media/salefood.jpg": "/clone/static/media/salefood.25d9dc64f0addafd3dc1.jpg",
+    "static/media/more.jpg": "/clone/static/media/more.8f9065490805ab2b672b.jpg",
+    "static/media/fullBag.jpg": "/clone/static/media/fullBag.e0077e5913a3da6715b7.jpg",
+    "static/media/bike.jpg": "/clone/static/media/bike.d861aba07b1a2d122383.jpg",
+    "static/media/google_svg.png": "/clone/static/media/google_svg.0ef0120c49c28510a465.png",
+    "static/media/no-pic.jpg": "/clone/static/media/no-pic.02553c8ea1ea71142f7f.jpg",
+    "static/media/google-play.png": "/clone/static/media/google-play.8f1f863c491d3edef4dc.png",
+    "static/media/apple.svg": "/clone/static/media/apple.c192f2fdf7eaf0429cb6b8e9565177a2.svg",
+    "index.html": "/clone/index.html",
+    "main.5d4c2373.css.map": "/clone/static/css/main.5d4c2373.css.map",
+    "main.11a13b04.js.map": "/clone/static/js/main.11a13b04.js.map"
   },
   "entrypoints": [
     "static/css/main.5d4c2373.css",
-    "static/js/main.77400ffe.js"
+    "static/js/main.11a13b04.js"
   ]
 }
